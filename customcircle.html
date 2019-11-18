@@ -1,0 +1,33 @@
+<DOCTYPE! html>
+<html>
+<body onload="draw()">
+  <canvas id="sketch" width="300" height="300">
+  </canvas>
+  <script>
+    var userColor = prompt("Do you want a red, green or blue circle?");
+    var userRadius = prompt("What's the radius size?");
+
+    if (userColor == "red" || userColor == "Red" || userColor == "RED") {
+      var color = "#ff0000";
+    }
+    else if (userColor == "green" || userColor == "Green" || userColor == "GREEN") {
+      color = "#00ff00";
+    }
+    else if (userColor == "blue" || userColor == "Blue" || userColor == "BLUE") {
+      color = "#0000ff";
+    }
+    else {
+      color = "#000000";
+    }
+    function draw() {
+      var sketch = document.getElementById('sketch');
+      var context = sketch.getContext("2d");
+      context.fillStyle = color;
+      context.beginPath();
+      context.arc(150, 150, userRadius, 0, 2 * Math.PI, true);
+      context.closePath();
+      context.fill();
+    }
+  </script>
+</body>
+</html>
