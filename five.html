@@ -1,17 +1,28 @@
 <DOCTYPE! html>
 <html>
-<body onload="draw()">
+<body>
   <canvas id="sketch" width="300" height="300">
   </canvas>
   <script>
-    function draw() {
-      var sketch = document.getElementById('sketch');
-      var context = sketch.getContext("2d");
-      for (var i = 0; i < 5; i++) {
-        context.fillStyle = "#1A45A0";
-        context.fillRect(5, 150, 25, 25);
-      }
+    var canvas;
+    var context;
 
+    window.onload = function() {
+      canvas = document.getElementById('sketch'); // for drawing grapics
+      context = canvas.getContext('2d');
+
+      draw();
+    }
+
+    function draw() {
+      for (var i = 0; i < 5; i++) {
+        drawSquare(30 * i, 150, 25, 25, '#1A45A0');
+      }
+    }
+
+    function drawSquare (leftX, topY, width, height, drawColor) { // reuseable function for drawing squares
+      context.fillStyle = drawColor;
+      context.fillRect(leftX, topY, width, height);
     }
   </script>
 </body>
