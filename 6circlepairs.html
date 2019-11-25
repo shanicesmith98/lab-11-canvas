@@ -1,0 +1,41 @@
+<DOCTYPE! html>
+<html>
+<body>
+  <canvas id="sketch" width="300" height="300">
+  </canvas>
+  <script>
+    var canvas;
+    var context;
+
+    window.onload = function() {
+      canvas = document.getElementById('sketch'); // for drawing grapics
+      context = canvas.getContext('2d');
+
+      draw();
+    }
+
+    function draw() {
+      drawCircle(100, 100, 60, '#8a3434');
+      drawCircle(100, 100, 50, '#a63838');
+      drawCircle(100, 100, 40, '#bd3737');
+      drawCircle(100, 100, 30, '#d43535');
+      drawCircle(100, 100, 20, '#e82e2e');
+      drawCircle(100, 100, 10, '#fc2121');
+
+      drawCircle(225, 100, 60, '#3b618a');
+      drawCircle(225, 100, 50, '#4273a8');
+      drawCircle(225, 100, 40, '#4885c7');
+      drawCircle(225, 100, 30, '#478fde');
+      drawCircle(225, 100, 20, '#4898f0');
+      drawCircle(225, 100, 10, '#3b98ff');
+    }
+
+    function drawCircle(centerX, centerY, radius, drawColor) { // reuseable function for drawing circles
+      context.fillStyle = drawColor;
+      context.beginPath();
+      context.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
+      context.fill();
+    }
+  </script>
+</body>
+</html>
