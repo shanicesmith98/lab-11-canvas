@@ -1,0 +1,37 @@
+<DOCTYPE! html>
+<html>
+<body>
+  <canvas id="sketch" width="300" height="300">
+  </canvas>
+  <script>
+    var canvas;
+    var context;
+
+    window.onload = function() {
+      canvas = document.getElementById('sketch'); // for drawing grapics
+      context = canvas.getContext('2d');
+
+      draw();
+    }
+
+    function draw() {
+    drawSquare(50, 25, 60, 25, '#A55F95'); // top
+    drawSquare(30, 50, 100, 35, '#A55F95'); // body
+    drawCircle(55, 85, 15,'black'); // wheels
+    drawCircle(105, 85, 15,'black'); // wheels
+    }
+
+    function drawSquare (leftX, topY, width, height, drawColor) { // reuseable function for drawing squares
+      context.fillStyle = drawColor;
+      context.fillRect(leftX, topY, width, height);
+    }
+
+    function drawCircle(centerX, centerY, radius, drawColor) { // reuseable function for drawing circles
+      context.fillStyle = drawColor;
+      context.beginPath();
+      context.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
+      context.fill();
+    }
+  </script>
+</body>
+</html>
