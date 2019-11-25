@@ -1,0 +1,31 @@
+<DOCTYPE! html>
+<html>
+<body>
+  <canvas id="sketch" width="300" height="300">
+  </canvas>
+  <script>
+    var canvas;
+    var context;
+
+    window.onload = function() {
+      canvas = document.getElementById('sketch'); // for drawing grapics
+      context = canvas.getContext('2d');
+
+      draw();
+    }
+
+    function draw() {
+      for (var i = 0; i < 5; i++) {
+        drawCircle((30 * i + 10), 20, 10, '#d175b2');
+      }
+    }
+
+    function drawCircle(centerX, centerY, radius, drawColor) { // reuseable function for drawing circles
+      context.fillStyle = drawColor;
+      context.beginPath();
+      context.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
+      context.fill();
+    }
+  </script>
+</body>
+</html>
