@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body onload="draw()">
+
+	<canvas id="sketch" width="600" height="600">
+	</canvas>
+
+	<script>
+		function draw() {
+			var sketch = document.getElementById('sketch');
+			var context = sketch.getContext("2d");
+				// 1. MAKESHIFT BLACK BORDER (thin)
+				// 1st sqaure, defined by loops below, is @50x50; total is 50x8=400
+				// pad outer dimension by 2 px (starting @48x48 & total 404x404)
+			context.fillStyle = "#000000"; // black
+			context.fillRect(48, 48, 404, 404);
+				// 2. OUTER LOOP (a column of 8 things; vertical dimension; i.e. # of rows)
+				// for each r, make a row (each row will be another loop, nested...)
+			for (r = 1; r <= 8; r++) {
+				if (r % 2 == 0) { // EVEN ROWS
+						// We use conditionals to color even & odd squares.
+						// 3. INNER LOOPs (rows; horizontal dimension; i.e. items in a single row)
+						// for each i, build a square to the right of the last
+					for (i = 1; i <= 8; i++) {
+						if (i % 2 == 0) { // even squares
+							context.fillStyle = "#ffffff"; // white (even sqaure / even row)
+							context.fillRect((i * 50), (r * 50), 50, 50);
+								// context.fillRect(x, y, width, height);
+						} else { // odd squares
+							context.fillStyle = "#000000"; // black (odd square / even row)
+							context.fillRect((i * 50), (r * 50), 50, 50);
+								// BLUE CIRCLES (checkers pieces) in 1ST 3 ROWS...
+							if (r == 2) { // isolate row 2
+								context.fillStyle = "#507180"; // blue
+								context.beginPath();
+								context.arc((i * 50 + 25), (r * 50 + 25), 20, 0, 2 * Math.PI, true);
+									// context.arc(x, y, radius, start angle, end angle, clockwise);
+									// Add 25 px to x & y dimensions to center each circle in square!
+								context.closePath();
+								context.fill();
+							}
+								// GREEN CIRCLES (checkers pieces) in LAST 3 ROWS...
+							if (r >= 6 && r <= 8) { // isolate rows 6 & 8
+								context.fillStyle = "#618050"; // green
+								context.beginPath();
+								context.arc((i * 50 + 25), (r * 50 + 25), 20, 0, 2 * Math.PI, true);
+									// context.arc(x, y, radius, start angle, end angle, clockwise);
+									// Add 25 px to x & y dimensions to center each circle in square!
+								context.closePath();
+								context.fill();
+							}
+						}
+					}
+				} else { // ODD ROWS
+					for (i = 1; i <= 8; i++) {
+						if (i % 2 == 0) { // even sqaures
+							context.fillStyle = "#000000"; // black (even square / odd row)
+							context.fillRect((i * 50), (r * 50), 50, 50);
+								// BLUE CIRCLES (checkers pieces) in 1ST 3 ROWS...
+							if (r <= 3) { // isolate rows 1 and 3
+								context.fillStyle = "#507180"; // blue
+								context.beginPath();
+								context.arc((i * 50 + 25), (r * 50 + 25), 20, 0, 2 * Math.PI, true);
+									// context.arc(x, y, radius, start angle, end angle, clockwise);
+									// Add 25 px to x & y dimensions to center each circle in square!
+								context.closePath();
+								context.fill();
+							}
+								// GREEN CIRCLES (checkers pieces) in LAST 3 ROWS...
+							if (r == 7) { // isolate row 7
+								context.fillStyle = "#618050"; // green
+								context.beginPath();
+								context.arc((i * 50 + 25), (r * 50 + 25), 20, 0, 2 * Math.PI, true);
+									// context.arc(x, y, radius, start angle, end angle, clockwise);
+									// Add 25 px to x & y dimensions to center each circle in square!
+								context.closePath();
+								context.fill();
+							}
+						} else { // odd squares
+							context.fillStyle = "#ffffff"; // white (odd sqaure / odd row)
+							context.fillRect((i * 50), (r * 50), 50, 50);
+						}
+				}
+			}
+		}
+	}
+	</script>
+
+</body>
+</html>
