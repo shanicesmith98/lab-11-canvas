@@ -1,0 +1,30 @@
+<DOCTYPE! html>
+<html>
+<body onload="draw()">
+  <canvas id="sketch" width="300" height="300">
+  </canvas>
+  <script>
+    function draw() {
+			var sketch = document.getElementById('sketch');
+			var context = sketch.getContext("2d");
+
+			for (i = 1; i <= 21; i++) {
+				if (i % 2 == 0) {
+					context.fillStyle = "#FF3200"; // weird red even circles
+					context.beginPath();
+					context.arc((i * 10), (i * 10), (i * 5), 0, 2 * Math.PI, true);
+					context.closePath();
+					context.fill();
+				} else {
+					context.fillStyle = "#595855"; // grey odd circles
+					context.beginPath();
+					context.arc((i * 10), (i * 10), (i * 5), 0, 2 * Math.PI, true);
+					context.closePath();
+					context.fill();
+				}
+			}
+		}
+
+  </script>
+</body>
+</html>
